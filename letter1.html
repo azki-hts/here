@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Spesial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.pinimg.com/736x/9c/a2/84/9ca2844d5c9c611d171ecc163da12cf1.jpg'); /* Ganti jadi gambar kertas kamu */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Georgia', serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(#fff8e7);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    p {
+      text-indent: 30px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      white-space: pre-wrap; /* Biar spasi & enter kebaca */
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #8d6e63;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba (0, 0, 0, 0.3);
+      transition: background 0.3s, transform 0.2s;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      .back-button {
+        padding: 14px 24px;
+        font-size: 18px;
+      } 
+    }
+
+    .back-button:hover {
+      background: rgb(#fff8e7);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tombol Kembali -->
+  <a href="index.html" class="back-button">← Kembali</a>
+
+  <div class="container">
+    <h1>Do I?</h1>
+    <p id="typewriter"></p>
+  </div>
+
+  <script>
+    // Teks surat bisa diubah di sini:
+    const text = `
+jadi, fun fact: waktu awal ketemu, i didn’t even look at u that way. di pikiranku pas pertama kenal kamu, cuma satu: "gimana caranya aku cepet-cepet kabur dari lingkungan ini." bukan karena orang-orangnya ga asik ya.. no, they’re fine kok, tapi aku ngerasa.. stuck. aku rasa.. perkembanganku di situ tuh lambat banget.
+
+jujur, aku sempet jengkel sama kamu waktu itu. pas kamu bilang keluar bukan jawaban. tbh, aku bukan sependiem yang mungkin kamu liat selama ini. aku cuma belum.. buka hati aja buat lingkungan baru. (padahal udah setengah tahun di situ lol). i’m not that quiet, just SHY.
+
+and u? u were that stranger i had no choice but to trust. stranger yang di awal malah bikin kesan “ih ngeselin” karena ga ngebolehin aku log out (aku sampe nangis saking keselnya huehue).
+
+tapi aneh deh. di tengah aku yang susah banget beradaptasi, this stranger... tiba-tiba muncul, ikut campur in the best way. bantu dorong aku, tapi nggak sampai bikin aku jatuh.
+
+and i like that. i felt... alive. i wasn’t refusing to adapt.. i was struggling to. and somehow, ur presence made it easier. bener kata Lauv, “i like me better when i’m with you.”
+
+anyway, thankiee for being kind to me`;
+
+    let i = 0;
+    const speed = 30; // kecepatan ketik (ms)
+    const typewriterElement = document.getElementById("typewriter");
+
+    function typeWriter() {
+      if (i < text.length) {
+        typewriterElement.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>

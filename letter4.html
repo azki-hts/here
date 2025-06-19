@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surat Spesial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://i.pinimg.com/736x/9c/a2/84/9ca2844d5c9c611d171ecc163da12cf1.jpg'); /* Ganti jadi gambar kertas kamu */
+      background-size: cover;
+      background-position: center;
+      font-family: 'Georgia', serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: rgba(#fff8e7);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 40px;
+    }
+
+    p {
+      text-indent: 30px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      white-space: pre-wrap; /* Biar spasi & enter kebaca */
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #8d6e63;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba (0, 0, 0, 0.3);
+      transition: background 0.3s, transform 0.2s;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      .back-button {
+        padding: 14px 24px;
+        font-size: 18px;
+      } 
+    }
+
+    .back-button:hover {
+      background: rgb(#fff8e7);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tombol Kembali -->
+  <a href="index.html" class="back-button">← Kembali</a>
+
+  <div class="container">
+    <h1>Absolutely YES</h1>
+    <p id="typewriter"></p>
+  </div>
+
+  <script>
+    // Teks surat bisa diubah di sini:
+    const text = `
+akhirnya aku berani ngaku. ke diri sendiri, at least. i like you. not cuz u're the main character. not cuz u're the "popular charming guy" everyone talks about. but because u’re you.
+
+aku suka cara kamu bawa diri. cara kamu santai, bercanda, tapi tetap bisa kasih comfort zone. cara kamu ga maksa orang buat suka sama kamu, but somehow... people naturally do. termasuk aku.
+
+and the best part is...
+thanks to u, aku jadi belajar buat suka sama diri aku sendiri. gara-gara kamu, aku berani buat grow di tempat yang awalnya aku pengen kabur.
+
+btw... ada satu hal yang belum aku bilang.
+
+dulu aku sering dikatain cupu, kaku, nerd, atau apalah... cuma gara-gara aku susah adaptasi sama lingkungan baru. slowly.. aku ngerasa.. that’s something i should hide. menurutku itu aib ku. aku mulai mikir "maybe i should act differently here." dan itu jadi kebiasaan. beda tempat, beda personality. misal di kelas aku bawel, di ekskul aku diem. two different person in one body.
+
+tapi gara-gara kamu, aku mulai mikir.. itu bukan aib kok. maybe it’s just.. my way. something that can be shaped, bukan dibuang.
+
+so... big thanks for that.
+
+aku juga tau niat kamu baik ke aku karena kamu notice aku kesusahan adaptasi. and that’s so valid. aku beneran ngerasa kebantu. karena di saat orang lain mikirnya "alah, ngapain malu-malu, wong sama-sama manusia", kamu malah dateng dengan caramu sendiri. ga maksa. ga bikin aku ngerasa kecil. ga bikin aku ngerasa pressure to change. (ajarin dong)
+
+makanya aku berani bilang ini sekarang. not cuz i want to make a move. not cuz i want to get closer to u. nope. aku confess bukan buat jadi langkah awal buat deketin kamu or anything like that. i just want u to know. that’s all.
+
+karena aku tau semua orang ada masanya. aku pun bakal ada masa di mana aku harus buka halaman baru. dan maybe, di halaman baru itu udah ga ada kamu. So .. i just want you to know. at least once, before that happens.
+
+maaf kalau perasaan ini malah bikin kamu nggak nyaman, atau ngerasa terbebani. but pls.. don’t ever stop being that good person you’ve always been.`;
+
+    let i = 0;
+    const speed = 30; // kecepatan ketik (ms)
+    const typewriterElement = document.getElementById("typewriter");
+
+    function typeWriter() {
+      if (i < text.length) {
+        typewriterElement.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>

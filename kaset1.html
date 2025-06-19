@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lirik Kaset - Super Final Fix Stay</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: url('https://i.pinimg.com/736x/a7/c9/52/a7c952e9109ebc7c55be96d8a5b4b939.jpg') no-repeat center center/cover;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lyrics-container {
+      display: none; /* Muncul hanya setelah klik play */
+      width: 90%;
+      max-width: 600px;
+      height: 300px; /* FIXED HEIGHT! */
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow-y: auto; /* Kalau lirik panjang bisa discroll, container diem */
+      box-sizing: border-box;
+    }
+
+    .lyrics {
+      font-size: 16px;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-break: break-word;
+      text-align: left;
+    }
+
+    .back-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #8d6e63;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px 14px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba (0, 0, 0, 0.3);
+      transition: background 0.3s, transform 0.2s;
+      z-index: 999;
+    }
+
+    @media (max-width: 600px) {
+      .back-button {
+        padding: 14px 24px;
+        font-size: 18px;
+      } 
+    }
+
+    .play-button {
+      padding: 10px 20px;
+      background: #f3e4c3;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      font-size: 18px;
+      position: absolute;
+    }
+
+    .play-button:hover {
+      background: #e0d0b0;
+    }
+  </style>
+</head>
+<body>
+
+<button class="play-button" onclick="startPlay()">Click Here!!!</button>
+
+<a href="kaset.html" class="back-button">← Kembali</a>
+
+<div class="lyrics-container">
+  <p id="lyric" class="lyrics"></p>
+</div>
+
+<audio id="audio" src="ilikeu.mp3"></audio>
+
+<script>
+  const lyrics = [
+    "but oh god i wish u were mine",
+    "i like u",
+    "i like u",
+    "i like u",
+    "sorry i never meant to",
+    "but who're we kidding, it wasn't like i had a say",
+    "one look at u and i won't have it any other way",
+    "i want u",
+    "i want u",
+    "i want u",
+    ":D"
+  ];
+
+  let lineIndex = 0;
+  let charIndex = 0;
+  const typingSpeed = [90, 30, 30, 30, 30, 50, 45, 30, 30, 30]; 
+  const lineDelay = [1000, 600, 600, 600, 600, 1000, 800, 500, 500, 500];
+  let allText = "";
+
+  function typeLine() {
+    if (lineIndex < lyrics.length) {
+      const currentLine = lyrics[lineIndex];
+      const displayedText = currentLine.substring(0, charIndex + 1);
+
+      // teks lama tetap stay, baris baru ngetik
+      document.getElementById('lyric').textContent = allText + displayedText;
+
+      charIndex++;
+      if (charIndex < currentLine.length) {
+        setTimeout(typeLine, typingSpeed[lineIndex] || 90);
+      } else {
+        allText += currentLine + "\n"; // simpan teks selesai
+        charIndex = 0;
+        lineIndex++;
+        setTimeout(typeLine, lineDelay[lineIndex] || 1000);
+      }
+    }
+  }
+
+  function startPlay() {
+    document.querySelector('.play-button').style.display = 'none';
+    document.querySelector('.lyrics-container').style.display = 'block';
+    document.getElementById('audio').play();
+    typeLine();
+  }
+</script>
+
+</body>
+</html>
